@@ -1,0 +1,908 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "c36bd6479c4d103cf97f454a55d6b881",
+    "entities": [
+      {
+        "tableName": "modelos",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`empresaId` TEXT NOT NULL, `idServidor` INTEGER NOT NULL, `versao` TEXT NOT NULL, `nome` TEXT NOT NULL, `descricao` TEXT NOT NULL, `layout` TEXT NOT NULL, `ativo` INTEGER NOT NULL, PRIMARY KEY(`empresaId`, `idServidor`))",
+        "fields": [
+          {
+            "fieldPath": "empresaId",
+            "columnName": "empresaId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idServidor",
+            "columnName": "idServidor",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "versao",
+            "columnName": "versao",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nome",
+            "columnName": "nome",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "descricao",
+            "columnName": "descricao",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "layout",
+            "columnName": "layout",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ativo",
+            "columnName": "ativo",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "empresaId",
+            "idServidor"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_modelos_empresaId_ativo",
+            "unique": false,
+            "columnNames": [
+              "empresaId",
+              "ativo"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_modelos_empresaId_ativo` ON `${TABLE_NAME}` (`empresaId`, `ativo`)"
+          }
+        ]
+      },
+      {
+        "tableName": "modelo_itens",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`empresaId` TEXT NOT NULL, `modeloId` INTEGER NOT NULL, `idServidor` INTEGER NOT NULL, `ordem` INTEGER NOT NULL, `nome` TEXT NOT NULL, `descricao` TEXT NOT NULL, `motivoObrigatorio` INTEGER NOT NULL, `fotoObrigatorio` INTEGER NOT NULL, `fotoQuantidadeMinima` INTEGER NOT NULL, `fotoQuantidadeMaxima` INTEGER NOT NULL, PRIMARY KEY(`empresaId`, `modeloId`, `idServidor`))",
+        "fields": [
+          {
+            "fieldPath": "empresaId",
+            "columnName": "empresaId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "modeloId",
+            "columnName": "modeloId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idServidor",
+            "columnName": "idServidor",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ordem",
+            "columnName": "ordem",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nome",
+            "columnName": "nome",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "descricao",
+            "columnName": "descricao",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "motivoObrigatorio",
+            "columnName": "motivoObrigatorio",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fotoObrigatorio",
+            "columnName": "fotoObrigatorio",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fotoQuantidadeMinima",
+            "columnName": "fotoQuantidadeMinima",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fotoQuantidadeMaxima",
+            "columnName": "fotoQuantidadeMaxima",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "empresaId",
+            "modeloId",
+            "idServidor"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_modelo_itens_empresaId_modeloId",
+            "unique": false,
+            "columnNames": [
+              "empresaId",
+              "modeloId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_modelo_itens_empresaId_modeloId` ON `${TABLE_NAME}` (`empresaId`, `modeloId`)"
+          }
+        ]
+      },
+      {
+        "tableName": "veiculos",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`empresaId` TEXT NOT NULL, `idServidor` INTEGER NOT NULL, `nome` TEXT NOT NULL, `ativo` INTEGER NOT NULL, PRIMARY KEY(`empresaId`, `idServidor`))",
+        "fields": [
+          {
+            "fieldPath": "empresaId",
+            "columnName": "empresaId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idServidor",
+            "columnName": "idServidor",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nome",
+            "columnName": "nome",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ativo",
+            "columnName": "ativo",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "empresaId",
+            "idServidor"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_veiculos_empresaId_ativo_nome",
+            "unique": false,
+            "columnNames": [
+              "empresaId",
+              "ativo",
+              "nome"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_veiculos_empresaId_ativo_nome` ON `${TABLE_NAME}` (`empresaId`, `ativo`, `nome`)"
+          }
+        ]
+      },
+      {
+        "tableName": "parceiros",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`empresaId` TEXT NOT NULL, `idServidor` INTEGER NOT NULL, `nome` TEXT NOT NULL, `ativo` INTEGER NOT NULL, PRIMARY KEY(`empresaId`, `idServidor`))",
+        "fields": [
+          {
+            "fieldPath": "empresaId",
+            "columnName": "empresaId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idServidor",
+            "columnName": "idServidor",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nome",
+            "columnName": "nome",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ativo",
+            "columnName": "ativo",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "empresaId",
+            "idServidor"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_parceiros_empresaId_ativo_nome",
+            "unique": false,
+            "columnNames": [
+              "empresaId",
+              "ativo",
+              "nome"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_parceiros_empresaId_ativo_nome` ON `${TABLE_NAME}` (`empresaId`, `ativo`, `nome`)"
+          }
+        ]
+      },
+      {
+        "tableName": "cursores",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`empresaId` TEXT NOT NULL, `tipo` TEXT NOT NULL, `cursor` TEXT, `carregado` INTEGER NOT NULL, `atualizadoEmUtc` INTEGER, `erro` TEXT, PRIMARY KEY(`empresaId`, `tipo`))",
+        "fields": [
+          {
+            "fieldPath": "empresaId",
+            "columnName": "empresaId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tipo",
+            "columnName": "tipo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cursor",
+            "columnName": "cursor",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "carregado",
+            "columnName": "carregado",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "atualizadoEmUtc",
+            "columnName": "atualizadoEmUtc",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "erro",
+            "columnName": "erro",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "empresaId",
+            "tipo"
+          ]
+        }
+      },
+      {
+        "tableName": "checklists",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idLocal` TEXT NOT NULL, `idServidor` INTEGER, `empresaId` TEXT NOT NULL, `perfilLocalId` TEXT NOT NULL, `modeloIdOrigem` INTEGER NOT NULL, `modeloVersaoOrigem` TEXT NOT NULL, `modeloNome` TEXT NOT NULL, `modeloLayout` TEXT NOT NULL, `dataHoraUtc` INTEGER NOT NULL, `veiculoIdOrigem` INTEGER, `veiculoNome` TEXT, `motoristaIdOrigem` INTEGER, `motoristaNome` TEXT, `contadorKm` INTEGER, `observacao` TEXT NOT NULL, `estadoPreenchimento` TEXT NOT NULL, `estadoEnvio` TEXT NOT NULL, `resultado` TEXT NOT NULL, PRIMARY KEY(`idLocal`))",
+        "fields": [
+          {
+            "fieldPath": "idLocal",
+            "columnName": "idLocal",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idServidor",
+            "columnName": "idServidor",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "empresaId",
+            "columnName": "empresaId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "perfilLocalId",
+            "columnName": "perfilLocalId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "modeloIdOrigem",
+            "columnName": "modeloIdOrigem",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "modeloVersaoOrigem",
+            "columnName": "modeloVersaoOrigem",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "modeloNome",
+            "columnName": "modeloNome",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "modeloLayout",
+            "columnName": "modeloLayout",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dataHoraUtc",
+            "columnName": "dataHoraUtc",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "veiculoIdOrigem",
+            "columnName": "veiculoIdOrigem",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "veiculoNome",
+            "columnName": "veiculoNome",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "motoristaIdOrigem",
+            "columnName": "motoristaIdOrigem",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "motoristaNome",
+            "columnName": "motoristaNome",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "contadorKm",
+            "columnName": "contadorKm",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "observacao",
+            "columnName": "observacao",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "estadoPreenchimento",
+            "columnName": "estadoPreenchimento",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "estadoEnvio",
+            "columnName": "estadoEnvio",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "resultado",
+            "columnName": "resultado",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "idLocal"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_checklists_perfilLocalId_dataHoraUtc",
+            "unique": false,
+            "columnNames": [
+              "perfilLocalId",
+              "dataHoraUtc"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_checklists_perfilLocalId_dataHoraUtc` ON `${TABLE_NAME}` (`perfilLocalId`, `dataHoraUtc`)"
+          },
+          {
+            "name": "index_checklists_empresaId_modeloIdOrigem",
+            "unique": false,
+            "columnNames": [
+              "empresaId",
+              "modeloIdOrigem"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_checklists_empresaId_modeloIdOrigem` ON `${TABLE_NAME}` (`empresaId`, `modeloIdOrigem`)"
+          },
+          {
+            "name": "index_checklists_estadoPreenchimento_estadoEnvio",
+            "unique": false,
+            "columnNames": [
+              "estadoPreenchimento",
+              "estadoEnvio"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_checklists_estadoPreenchimento_estadoEnvio` ON `${TABLE_NAME}` (`estadoPreenchimento`, `estadoEnvio`)"
+          }
+        ]
+      },
+      {
+        "tableName": "checklist_itens",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idLocal` TEXT NOT NULL, `checklistId` TEXT NOT NULL, `modeloItemIdOrigem` INTEGER NOT NULL, `ordem` INTEGER NOT NULL, `nome` TEXT NOT NULL, `descricao` TEXT NOT NULL, `motivoObrigatorio` INTEGER NOT NULL, `fotoObrigatorio` INTEGER NOT NULL, `fotoQuantidadeMinima` INTEGER NOT NULL, `fotoQuantidadeMaxima` INTEGER NOT NULL, `resposta` TEXT NOT NULL, `motivo` TEXT NOT NULL, PRIMARY KEY(`idLocal`), FOREIGN KEY(`checklistId`) REFERENCES `checklists`(`idLocal`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "idLocal",
+            "columnName": "idLocal",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "checklistId",
+            "columnName": "checklistId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "modeloItemIdOrigem",
+            "columnName": "modeloItemIdOrigem",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ordem",
+            "columnName": "ordem",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nome",
+            "columnName": "nome",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "descricao",
+            "columnName": "descricao",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "motivoObrigatorio",
+            "columnName": "motivoObrigatorio",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fotoObrigatorio",
+            "columnName": "fotoObrigatorio",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fotoQuantidadeMinima",
+            "columnName": "fotoQuantidadeMinima",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fotoQuantidadeMaxima",
+            "columnName": "fotoQuantidadeMaxima",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "resposta",
+            "columnName": "resposta",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "motivo",
+            "columnName": "motivo",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "idLocal"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_checklist_itens_checklistId_ordem",
+            "unique": false,
+            "columnNames": [
+              "checklistId",
+              "ordem"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_checklist_itens_checklistId_ordem` ON `${TABLE_NAME}` (`checklistId`, `ordem`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "checklists",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "checklistId"
+            ],
+            "referencedColumns": [
+              "idLocal"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "fotos",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idLocal` TEXT NOT NULL, `idServidor` INTEGER, `checklistId` TEXT NOT NULL, `itemId` TEXT NOT NULL, `caminhoRelativo` TEXT NOT NULL, `ordem` INTEGER NOT NULL, `mime` TEXT NOT NULL, `tamanhoBytes` INTEGER NOT NULL, `sha256` TEXT NOT NULL, `dataHoraUtc` INTEGER NOT NULL, `estadoEnvio` TEXT NOT NULL, PRIMARY KEY(`idLocal`), FOREIGN KEY(`checklistId`) REFERENCES `checklists`(`idLocal`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`itemId`) REFERENCES `checklist_itens`(`idLocal`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "idLocal",
+            "columnName": "idLocal",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idServidor",
+            "columnName": "idServidor",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "checklistId",
+            "columnName": "checklistId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "itemId",
+            "columnName": "itemId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "caminhoRelativo",
+            "columnName": "caminhoRelativo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ordem",
+            "columnName": "ordem",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mime",
+            "columnName": "mime",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tamanhoBytes",
+            "columnName": "tamanhoBytes",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sha256",
+            "columnName": "sha256",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dataHoraUtc",
+            "columnName": "dataHoraUtc",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "estadoEnvio",
+            "columnName": "estadoEnvio",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "idLocal"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_fotos_checklistId",
+            "unique": false,
+            "columnNames": [
+              "checklistId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_fotos_checklistId` ON `${TABLE_NAME}` (`checklistId`)"
+          },
+          {
+            "name": "index_fotos_itemId",
+            "unique": false,
+            "columnNames": [
+              "itemId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_fotos_itemId` ON `${TABLE_NAME}` (`itemId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "checklists",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "checklistId"
+            ],
+            "referencedColumns": [
+              "idLocal"
+            ]
+          },
+          {
+            "table": "checklist_itens",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "itemId"
+            ],
+            "referencedColumns": [
+              "idLocal"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "assinaturas",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idLocal` TEXT NOT NULL, `idServidor` INTEGER, `checklistId` TEXT NOT NULL, `caminhoRelativo` TEXT NOT NULL, `mime` TEXT NOT NULL, `tamanhoBytes` INTEGER NOT NULL, `sha256` TEXT NOT NULL, `dataHoraUtc` INTEGER NOT NULL, `perfilLocalId` TEXT NOT NULL, `estadoEnvio` TEXT NOT NULL, PRIMARY KEY(`idLocal`), FOREIGN KEY(`checklistId`) REFERENCES `checklists`(`idLocal`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "idLocal",
+            "columnName": "idLocal",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idServidor",
+            "columnName": "idServidor",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "checklistId",
+            "columnName": "checklistId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "caminhoRelativo",
+            "columnName": "caminhoRelativo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mime",
+            "columnName": "mime",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tamanhoBytes",
+            "columnName": "tamanhoBytes",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sha256",
+            "columnName": "sha256",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dataHoraUtc",
+            "columnName": "dataHoraUtc",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "perfilLocalId",
+            "columnName": "perfilLocalId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "estadoEnvio",
+            "columnName": "estadoEnvio",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "idLocal"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_assinaturas_checklistId",
+            "unique": true,
+            "columnNames": [
+              "checklistId"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_assinaturas_checklistId` ON `${TABLE_NAME}` (`checklistId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "checklists",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "checklistId"
+            ],
+            "referencedColumns": [
+              "idLocal"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "pendencias",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`checklistId` TEXT NOT NULL, `etapa` TEXT NOT NULL, `tentativas` INTEGER NOT NULL, `erro` TEXT, `atualizadoEmUtc` INTEGER NOT NULL, PRIMARY KEY(`checklistId`), FOREIGN KEY(`checklistId`) REFERENCES `checklists`(`idLocal`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "checklistId",
+            "columnName": "checklistId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "etapa",
+            "columnName": "etapa",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tentativas",
+            "columnName": "tentativas",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "erro",
+            "columnName": "erro",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "atualizadoEmUtc",
+            "columnName": "atualizadoEmUtc",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "checklistId"
+          ]
+        },
+        "foreignKeys": [
+          {
+            "table": "checklists",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "checklistId"
+            ],
+            "referencedColumns": [
+              "idLocal"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "servidor_fake_checklists",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idLocal` TEXT NOT NULL, `idServidor` INTEGER NOT NULL, `confirmado` INTEGER NOT NULL, PRIMARY KEY(`idLocal`))",
+        "fields": [
+          {
+            "fieldPath": "idLocal",
+            "columnName": "idLocal",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idServidor",
+            "columnName": "idServidor",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "confirmado",
+            "columnName": "confirmado",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "idLocal"
+          ]
+        }
+      },
+      {
+        "tableName": "servidor_fake_anexos",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idLocal` TEXT NOT NULL, `checklistId` TEXT NOT NULL, `recebido` INTEGER NOT NULL, PRIMARY KEY(`idLocal`))",
+        "fields": [
+          {
+            "fieldPath": "idLocal",
+            "columnName": "idLocal",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "checklistId",
+            "columnName": "checklistId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "recebido",
+            "columnName": "recebido",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "idLocal"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_servidor_fake_anexos_checklistId",
+            "unique": false,
+            "columnNames": [
+              "checklistId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_servidor_fake_anexos_checklistId` ON `${TABLE_NAME}` (`checklistId`)"
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c36bd6479c4d103cf97f454a55d6b881')"
+    ]
+  }
+}

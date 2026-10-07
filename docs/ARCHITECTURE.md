@@ -1,0 +1,9 @@
+# Arquitetura
+
+`domain` contém regras e portas de repositório; `data/local` contém Room e DataStore; `data/remote` contém as interfaces do contrato, cliente HTTP e servidor fake separado; `data/repository` coordena a substituição de cadastros e o acesso local; `media` guarda arquivos privados; `sync` contém WorkManager e o envio; `ui/*` contém Compose, estados imutáveis, ViewModels e Navigation 3. A UI observa Room por Flow, inclusive com internet.
+
+O banco Room versão 2 segrega catálogos pelo par `empresaId`/`perfilLocalId`. A carga `GET /cadastros` substitui os três catálogos e os itens de modelo em uma transação. A checklist tem snapshot do modelo, itens com UUID próprio e campos de controle de revisão e sincronização. A atualização da versão 1 para a 2 usa recriação destrutiva do banco, autorizada pelo usuário para esta entrega. Login e refresh existentes não foram reimplementados nem alterados.
+
+`HttpChecklistApi` usa `HttpURLConnection` e `org.json` da plataforma para `GET /cadastros`, `POST /checklist`, `PUT /checklist/{id}` e `POST /checklist/{uuid}/anexos`. Nenhuma dependência nova foi necessária. `DemoChecklistApi` usa tabelas locais distintas e não participa da execução normal. O mesmo UUID identifica checklist no Room e no JSON enviado; nenhum ID remoto numérico é usado no contrato novo. `ChecklistSynchronizer` lê uma versão coerente, envia os dados e o lote Base64, confere os UUIDs recebidos e só então preenche `dataHoraSincronizado`, se a revisão local ainda coincidir.
+
+As dependências existentes continuam justificadas: Room/KSP para dados e transações; coroutines/Flow para observação e I/O; Lifecycle ViewModel para estado; Compose Material 3 e Navigation 3 para interface; DataStore para preferências; WorkManager para fila durável com restrição de rede; CameraX e Photo Picker para mídia; Paging 3 para histórico local. Nenhuma dependência foi acrescentada nesta alteração.
